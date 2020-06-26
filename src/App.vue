@@ -75,7 +75,7 @@ export default {
       let res = false;
       const self = this;
       console.log(number, pass);
-      if (number === '1718140410' && pass === 'admin') res = true;
+      if (number === '123' && pass === '123') res = true;
       this.$refs[formName].validate(valid => {
         if (valid && res) {
           this.$message({

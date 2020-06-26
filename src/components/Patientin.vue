@@ -73,11 +73,12 @@
 </template>
 
 <script>
+import {getProductsForm} from '../api/home';
 export default {
   name: 'Products',
   data() {
     return {
-      tableData: [{}],
+      tableData: [],
       searchData: '',
       dialogFormVisible: false,
       form: {
@@ -89,8 +90,18 @@ export default {
       },
     };
   },
-  created() {},
+  created() {
+    //test datas.
+    this.fetchData();
+  },
   methods: {
+    fetchData() {
+      for (let i = 0; i < 20; i++) {
+        getProductsForm().then(res => {
+          this.tableData.push(res);
+        });
+      }
+    },
     showDetail(index) {
       const vm = this;
       vm.$router.push({name: 'detail', params: {id: index}});
